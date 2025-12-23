@@ -16,6 +16,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 app.use(requestIp());
+app.use(express.urlencoded({ extended: true }));
 app.use(
   rateLimit({
     windowMs: 15 * 60 * 1000,
