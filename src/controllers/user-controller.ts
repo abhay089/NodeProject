@@ -11,7 +11,7 @@ import {
   deleteUser,
   getUserByEmail,
   //  updateUser,
-  verifyUser,
+  //verifyUser,
 } from '@/services/user-service';
 import { UserVerified } from '@/templates/user-verified';
 import { sendVerificationEmail } from '@/utils/email';
@@ -22,7 +22,7 @@ import { render } from '@react-email/render';
 import argon2 from 'argon2';
 
 export const handleUserLogin = asyncValidatorHandler(async (req, _res) => {
-  const data = loginSchema.parse(req.body);
+  const data = loginSchema.parse(req);
   const { email, password } = data.body;
   const user = await getUserByEmail(email);
 
@@ -31,6 +31,7 @@ export const handleUserLogin = asyncValidatorHandler(async (req, _res) => {
   }
 
   const matchPassword = await argon2.verify(user.password, password, {
+    //@ts-ignore
     salt: Buffer.from(user.salt, 'hex'),
   });
   if (!matchPassword) {
@@ -42,7 +43,7 @@ export const handleUserLogin = asyncValidatorHandler(async (req, _res) => {
 });
 
 export const handleAddUser = asyncValidatorHandler(async (req, _res) => {
-  const data = newUserSchema.parse(req.body);
+  const data = newUserSchema.parse(req);
 
   const user = data.body;
 
@@ -54,51 +55,51 @@ export const handleAddUser = asyncValidatorHandler(async (req, _res) => {
 
   const { user: addedUser, code } = await addUser(user);
 
-  const status = await sendVerificationEmail(
-    process.env.API_BASE_URL,
-    addedUser.name,
-    addedUser.email,
-    code
-  );
+  // const status = await sendVerificationEmail(
+  //   process.env.API_BASE_URL,
+  //   addedUser.name,
+  //   addedUser.email,
+  //   code
+  // );
 
-  if (status !== 200) {
-    await deleteUser(addedUser.email);
+  // if (status !== 200) {
+  //   await deleteUser(addedUser.email);
 
-    throw new InvalidValueError('Failed to signup user.', { key: 'email' });
-  }
+  //   throw new InvalidValueError('Failed to signup user.', { key: 'email' });
+  // }
 
   return addedUser;
 });
 
-export const handleVerifyUser = asyncValidatorHandler(async (req, res) => {
-  try {
-    const data = verifyUserSchema.parse(req.body);
+// export const handleVerifyUser = asyncValidatorHandler(async (req, res) => {
+//   try {
+//     const data = verifyUserSchema.parse(req.body);
 
-    const { email, code } = data.query;
+//     const { email, code } = data.query;
 
-    await verifyUser(email, code);
-    const template = render(
-      UserVerified({ status: 'verified', message: 'User verified successfully' })
-    );
+//     await verifyUser(email, code);
+//     const template = render(
+//       UserVerified({ status: 'verified', message: 'User verified successfully' })
+//     );
 
-    //@ts-ignore
-    return res.status(200).send(template);
-  } catch (err) {
-    if (err instanceof Error) {
-      const template = render(
-        UserVerified({
-          status: 'invalid',
-          message: err.message,
-          error: 'Invalid Request',
-        })
-      );
-      //@ts-ignore
-      res.status(400).send(template);
-      return;
-    }
-    throw err;
-  }
-});
+//     //@ts-ignore
+//     return res.status(200).send(template);
+//   } catch (err) {
+//     if (err instanceof Error) {
+//       const template = render(
+//         UserVerified({
+//           status: 'invalid',
+//           message: err.message,
+//           error: 'Invalid Request',
+//         })
+//       );
+//       //@ts-ignore
+//       res.status(400).send(template);
+//       return;
+//     }
+//     throw err;
+//   }
+// });
 
 // export const handleDeleteUser = createHandler(deleteUserSchema, async (req, res) => {
 //   const { email } = req.body;

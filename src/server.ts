@@ -1,4 +1,6 @@
+
 import routes from '@/routes/route';
+//@ts-ignore
 import consola from 'consola';
 import cors from 'cors';
 import express from 'express';
@@ -8,6 +10,7 @@ import { setCallback } from '@qnx/response';
 import { logger } from '@qnx/winston';
 
 import './utils/env';
+
 
 const { PORT } = process.env;
 

@@ -7,7 +7,7 @@ const JWT_CONFIG: JWT.SignOptions = {
 
 const { JWT_SECRET } = process.env;
 
-export default function generateToken(userId: string): string {
+export default function generateToken(userId: number): string {
   return JWT.sign({ userId }, JWT_SECRET, JWT_CONFIG);
 }
 

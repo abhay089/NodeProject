@@ -27,7 +27,7 @@ try {
   configSchema.parse(process.env);
 } catch (error) {
   if (error instanceof ZodError) {
-    console.error(error.errors);
+    console.error(error);
   }
   process.exit(1);
 }

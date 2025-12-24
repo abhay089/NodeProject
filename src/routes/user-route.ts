@@ -4,7 +4,7 @@ import {
   // handleGetUser,
   // handleUpdateUser,
   handleUserLogin,
-  handleVerifyUser,
+ // handleVerifyUser,
 } from '@/controllers/user-controller';
 //import { authenticate } from '@/middlewares/auth';
 import { createRouter } from '@/utils/create';
@@ -12,7 +12,7 @@ import { Router } from 'express';
 
 export default createRouter((router: Router) => {
   //router.get('/', authenticate(), handleGetUser);
-  router.get('/verify', (req, res, next) => handleVerifyUser(req, res, next));
+ // router.get('/verify', (req, res, next) => handleVerifyUser(req, res, next));
   router.post('/create', handleAddUser);
   router.post('/login', handleUserLogin);
   //router.post('/remove', authenticate(), handleDeleteUser);
