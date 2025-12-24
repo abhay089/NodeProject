@@ -1,9 +1,5 @@
-import {
-  addCompany, deleteCompany,
-} from '@/services/company-service';
-import {
-  newCompanySchema, deleteCompanySchema
-} from '@/schema/company';
+import { addCompany, deleteCompany, updateCompany} from '@/services/company-service';
+import { newCompanySchema, deleteCompanySchema, editCompanySchema } from '@/schema/company';
 import generateToken from '@/utils/jwt';
 import argon2 from 'argon2';
 
@@ -24,6 +20,21 @@ export const handleDeleteCompany = asyncValidatorHandler(async (req, _res) => {
   const { id } = data.body;
 
   const result = await deleteCompany(id);
+
+  return result;
+});
+
+export const handleEditCompany = asyncValidatorHandler(async (req, _res) => {
+  console.log('hjkl');
+  const data = editCompanySchema.parse(req);
+
+  const { id, companyName, email, phone } = data.body;
+
+  const result = await updateCompany(id, {
+    companyName,
+    email,
+    phone,
+  });
 
   return result;
 });

@@ -31,3 +31,20 @@ export const deleteCompany = async (id: number) => {
   return { success: true };
 };
 
+export const updateCompany = async (id: number,
+  payload: {
+    companyName: string;
+    email: string;
+    phone: string;
+  }
+) => {
+  const result = await db
+    .update(companies)
+    .set(payload)
+    .where(eq(companies.id, id));
+
+  return {
+    message: 'Company updated successfully',
+  };
+};
+

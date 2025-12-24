@@ -1,0 +1,17 @@
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:49:23.825Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:49:42.010Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:49:49.196Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:50:36.469Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:50:39.470Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:51:13.553Z"}
+{"level":"error","message":"API Handler: Converting circular structure to JSON\n    --> starting at object with constructor 'Socket'\n    |     property 'parser' -> object with constructor 'HTTPParser'\n    --- property 'socket' closes the circle","stack":"TypeError: Converting circular structure to JSON\n    --> starting at object with constructor 'Socket'\n    |     property 'parser' -> object with constructor 'HTTPParser'\n    --- property 'socket' closes the circle\n    at JSON.stringify (<anonymous>)\n    at stringify (/Users/abhaygupta/development/express-mysql-drizzle-starter/node_modules/express/lib/response.js:1034:12)\n    at ServerResponse.json (/Users/abhaygupta/development/express-mysql-drizzle-starter/node_modules/express/lib/response.js:245:14)\n    at ServerResponse.send (/Users/abhaygupta/development/express-mysql-drizzle-starter/node_modules/express/lib/response.js:151:21)\n    at d.response (file:///Users/abhaygupta/development/express-mysql-drizzle-starter/node_modules/@qnx/response/dist/response.mjs:99:109)\n    at file:///Users/abhaygupta/development/express-mysql-drizzle-starter/node_modules/@qnx/response/dist/response.mjs:296:22\n    at process.processTicksAndRejections (node:internal/process/task_queues:103:5)","timestamp":"2025-12-23T08:51:19.967Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:51:56.997Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:52:06.268Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:52:57.788Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:53:47.175Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:56:40.465Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T08:56:55.113Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T09:02:53.919Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T09:03:26.881Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T09:03:37.528Z"}
+{"level":"debug","message":"Logging initialized at debug level","timestamp":"2025-12-23T09:03:45.121Z"}

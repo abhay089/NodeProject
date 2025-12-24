@@ -33,5 +33,15 @@ export const deleteCompanySchema = z.object({
   }),
 })
 
-export type company = InferSelectModel<typeof companies>;
+export const editCompanySchema = z.object({
+  body: z.object({
+    id: z.coerce.number(),
+    companyName: z.string().min(1),
+    email: z.string().email(),
+    // phone: z.string().min(10),
+    phone: z.coerce.string().min(8),
+  })
+});
+
+export type Company = InferSelectModel<typeof companies>;
 export type NewCompany = z.infer<typeof newCompanySchema>['body'];
